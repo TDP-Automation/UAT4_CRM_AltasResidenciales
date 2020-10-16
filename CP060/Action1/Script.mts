@@ -686,6 +686,7 @@ Sub TipoEnvio()
 				wait 1
 				
 				Wend
+				 wait 3
 				 Dim tex
 				 tex=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaEdit("Nombre y Dirección de").GetROProperty("text")
 				  While tex=""
@@ -693,16 +694,17 @@ Sub TipoEnvio()
 				  	tex=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaEdit("Nombre y Dirección de").GetROProperty("text")
 				  	
 				  Wend
-				
+				wait 3
 
 				
 				If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").Exist Then
+					wait 4
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Lookup-Validated").WaitProperty "enabled", True, 20000
-					wait 3
+					wait 5
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaRadioButton("Nuevo").Set
-					wait 2
+					wait 5
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaList("Mostrar:").Select "Acciones de orden activas "
-					wait 3
+					wait 5
 
 					
 
@@ -726,7 +728,7 @@ Sub TipoEnvio()
 	'					
 						JavaWindow("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() &Num_Iter&"_"&"Negociar Distribución"&".png", True
 						imagenToWord "Negociar Distribución", RutaEvidencias() &Num_Iter&"_"&"Negociar Distribución"&".png"
-						wait 3 
+						wait 5
 						JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Siguiente >").Click
 	'				End If
 						

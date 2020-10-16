@@ -653,6 +653,23 @@ Sub TipoEnvio()
 						DataTable("s_Detalle", dtLocalSheet) = "No se puede seleccionr método de entrega"
 						Reporter.ReportEvent micFail, DataTable("s_Resultado", dtLocalSheet), DataTable("s_Detalle", dtLocalSheet)
 						JavaWindow("Ejecutivo de interacción").JavaDialog("Mensaje").JavaButton("OK").Click
+						wait 1
+						JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar dirección de").JavaButton("Cancelar oferta").Click
+						While JavaWindow("Ejecutivo de interacción").JavaDialog("Seleccionar una opción").Exist=False
+							wait 1
+						Wend
+						wait 2
+						JavaWindow("Ejecutivo de interacción").JavaDialog("Seleccionar una opción").JavaButton("Sí").Click
+						While JavaWindow("Ejecutivo de interacción").JavaDialog("Negociar dirección de").JavaTable("Acciones de orden que").Exist=False
+							wait 1
+						Wend
+						wait 2
+						JavaWindow("Ejecutivo de interacción").JavaDialog("Negociar dirección de").JavaButton("Aceptar").Click
+						wait 2
+						While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Orden 2302300A").JavaEdit("TextAreaNative$1").Exist=False
+							wait 1
+						Wend
+						
 						ExitActionIteration
 				End If
 				
@@ -664,16 +681,30 @@ Sub TipoEnvio()
 					c=c+1 
 					If (c=30) Then exit Do 
 			Loop
-		wait 1
+				wait 1  
+				While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaEdit("Nombre y Dirección de").Exist=False
+				wait 1
 				
+				Wend
+				wait 3
+				 Dim tex
+				 tex=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaEdit("Nombre y Dirección de").GetROProperty("text")
+				  While tex=""
+				  	wait 1
+				  	tex=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaEdit("Nombre y Dirección de").GetROProperty("text")
+				  	
+				  Wend
+				wait 3
+
 				
 				If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").Exist Then
+					wait 5
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Lookup-Validated").WaitProperty "enabled", True, 20000
-					wait 3
+					wait 5
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaRadioButton("Nuevo").Set
-					wait 2
+					wait 5
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaList("Mostrar:").Select "Acciones de orden activas "
-					wait 3
+					wait 5
 
 					
 
@@ -697,7 +728,7 @@ Sub TipoEnvio()
 	'					
 						JavaWindow("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() &Num_Iter&"_"&"Negociar Distribución"&".png", True
 						imagenToWord "Negociar Distribución", RutaEvidencias() &Num_Iter&"_"&"Negociar Distribución"&".png"
-						wait 3 
+						wait 5
 						JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Siguiente >").Click
 	'				End If
 						
@@ -813,6 +844,16 @@ Sub Financiamiento()
 '			wait 2
 '			ExitActionIteration
 	End If
+	 While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Pago Inmediato").JavaEdit("Nombre a Facturar BAR").Exist=False
+	  wait 1
+	 Wend
+
+	Dim text
+	text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Pago Inmediato").JavaEdit("Nombre a Facturar BAR").GetROProperty("text")
+	While text=""
+	wait 1
+	text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Pago Inmediato").JavaEdit("Nombre a Facturar BAR").GetROProperty("text")
+	Wend
 
 	wait 5
 	If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Pago Inmediato").JavaList("Tipo de documento:").Exist Then
@@ -1160,7 +1201,7 @@ Sub GestionLogistica()
 					imagenToWord "Ingreso de Materiales", RutaEvidencias() &Num_Iter&"_"&"Ingreso_Materiales_"&".png"
 					JavaWindow("Ejecutivo de interacción").JavaDialog("Buscar: Orden > Solicitar").JavaButton("Validar y Crear Factura").Object.doClick()
 
-wait 1
+											wait 1
 					tiempo = 0
 					Do
 						tiempo=tiempo+1
