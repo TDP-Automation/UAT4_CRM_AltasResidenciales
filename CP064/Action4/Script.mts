@@ -71,6 +71,7 @@ Sub FlujoWIC()
 	If ucase(WIC_Activa) = "SI" Then
 		
 RunAction "WIC", oneIteration
+
 	End If
 End Sub
 Sub SeleccionarPlan()
