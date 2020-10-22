@@ -79,6 +79,7 @@ Sub Prepago()
 	Window("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() & "Prepago.png", True
 	imagenToWord "Click Prepago", RutaEvidencias() & "Prepago.png"
 	Window("Ejecutivo de interacción").InsightObject("InsightObject_3").Click
+	wait 5
 	
 	If Window("Ejecutivo de interacción").InsightObject("InsightObject_5").Exist = True Then
 		wait 1
