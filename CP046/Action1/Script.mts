@@ -201,8 +201,9 @@ Sub SeleccionarPlanTarifario()
 	wait 5
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Nuevo Plan (Para WILSON").JavaList("ComboBoxNative$1").WaitProperty "enabled", true, 40000
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Nuevo Plan (Para WILSON").JavaEdit("Equipo seleccionado:").Set DataTable("e_TipoDePlan", dtLocalSheet)
-	wait 5
+	wait 3
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Nuevo Plan (Para WILSON").JavaButton("Buscar").Click
+	wait 2
 
 		While((JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Nuevo Plan (Para WILSON").JavaCheckBox("Seleccionar").Exist) Or (JavaWindow("Ejecutivo de interacción").JavaDialog("Mensaje").Exist))   = False
 			wait 1
