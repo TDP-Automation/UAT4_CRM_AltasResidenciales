@@ -55,7 +55,7 @@ Sub SeleccionarTipoAlta()
 			wait 1
 			
 		Case "Alta Nueva Solo Linea"
-			wait 5
+			wait 7
 			JavaWindow("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() & "Panel_Interaccion_"&Num_Iter&".png", True
 			imagenToWord "Panel de Interacción", RutaEvidencias() &"Panel_Interaccion_"&Num_Iter&".png"
 			JavaWindow("Ejecutivo de interacción").JavaTable("Titulo").ActivateRow "#5" @@ hightlight id_;_27080509_;_script infofile_;_ZIP::ssf1.xml_;_
