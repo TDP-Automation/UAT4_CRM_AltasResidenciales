@@ -16,11 +16,13 @@ While Window("Ejecutivo de interacción").InsightObject("InsightObject").Exist =
 Wend
 wait 1
  Window("Ejecutivo de interacción").InsightObject("InsightObject").Click
+ wait 1
  While Window("Ejecutivo de interacción").InsightObject("InsightObject_4").Exist = false
  	wait 1
  Wend
  wait 1
  Window("Ejecutivo de interacción").InsightObject("InsightObject_4").Click
+ wait 2
 While  (Window("Ejecutivo de interacción").InsightObject("InsightObject_16").Exist or Window("Ejecutivo de interacción").InsightObject("InsightObject_24").Exist) = false
 	wait 1
 Wend
