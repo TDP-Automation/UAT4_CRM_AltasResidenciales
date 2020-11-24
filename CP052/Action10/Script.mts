@@ -16,11 +16,13 @@ While Window("Ejecutivo de interacción").InsightObject("InsightObject").Exist =
 Wend
 wait 1
  Window("Ejecutivo de interacción").InsightObject("InsightObject").Click
+ wait 1
  While Window("Ejecutivo de interacción").InsightObject("InsightObject_4").Exist = false
  	wait 1
  Wend
  wait 1
  Window("Ejecutivo de interacción").InsightObject("InsightObject_4").Click
+ wait 2
 While  (Window("Ejecutivo de interacción").InsightObject("InsightObject_16").Exist or Window("Ejecutivo de interacción").InsightObject("InsightObject_24").Exist) = false
 	wait 1
 Wend
@@ -42,15 +44,18 @@ End If
 Set shell = CreateObject("Wscript.Shell") 
 shell.SendKeys "{PGDN 2}"
 
-While Window("Ejecutivo de interacción").InsightObject("InsightObject_7").Exist = false
-	wait 1
-Wend
+'While Window("Ejecutivo de interacción").InsightObject("InsightObject_7").Exist = false
+'	wait 1
+'Wend
 wait 1
 If Window("Ejecutivo de interacción").InsightObject("InsightObject_19").Exist = true Then
 	Call Validacion()
 End If
-Window("Ejecutivo de interacción").InsightObject("InsightObject_7").Click
+If Window("Ejecutivo de interacción").InsightObject("InsightObject_7").Exist = True Then
+	Window("Ejecutivo de interacción").InsightObject("InsightObject_7").Click
 wait 5
+End If
+
 Window("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() & "ValidacionDatos.png", True
 imagenToWord "Validación de Datos Exitosa", RutaEvidencias() & "ValidacionDatos.png"
 Window("Ejecutivo de interacción").InsightObject("InsightObject_8").Click

@@ -55,7 +55,7 @@ Sub SeleccionarTipoAlta()
 			wait 1
 			
 		Case "Alta Nueva Solo Linea"
-			wait 5
+			wait 7
 			JavaWindow("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() & "Panel_Interaccion_"&Num_Iter&".png", True
 			imagenToWord "Panel de Interacción", RutaEvidencias() &"Panel_Interaccion_"&Num_Iter&".png"
 			JavaWindow("Ejecutivo de interacción").JavaTable("Titulo").ActivateRow "#5" @@ hightlight id_;_27080509_;_script infofile_;_ZIP::ssf1.xml_;_
@@ -657,6 +657,7 @@ Sub TipoEnvio()
 				If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").Exist Then
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Lookup-Validated").WaitProperty "enabled", True, 20000
 					wait 3
+					
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaRadioButton("Nuevo").Set "ON"
 					wait 2
 					JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaList("Mostrar:").Select "Acciones de orden activas "
